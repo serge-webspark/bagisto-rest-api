@@ -200,17 +200,12 @@ class Product
      *          @OA\Property(property="total", type="integer"),
      *          @OA\Property(property="total_rating", type="string"),
      *          @OA\Property(property="average_rating", type="string"),
-     *          @OA\Property(
+                @OA\Property(
      *              property="percentage",
      *              type="array",
-     *
      *              @OA\Items(
-     *
-     *                  @OA\Property(property="5", type="float"),
-     *                  @OA\Property(property="4", type="float"),
-     *                  @OA\Property(property="3", type="float"),
-     *                  @OA\Property(property="2", type="float"),
-     *                  @OA\Property(property="1", type="float")
+     *                  @OA\Property(property="rating", type="integer", example=5),
+     *                  @OA\Property(property="percentage", type="float", example=100)
      *              )
      *          )
      *     )
