@@ -67,7 +67,12 @@ class AuthController
      * 					property="data",
      * 					type="object",
      * 					ref="#/components/schemas/Customer"
-     *				)
+     *				),
+     *              @OA\Property(
+     *                  property="token",
+     *                  type="string",
+     *                  example="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+     *              )
      *          )
      *      ),
      *
