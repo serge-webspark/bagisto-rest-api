@@ -188,18 +188,10 @@ class Product
      *     title="Reviews",
      *     description="Product's reviews",
      *     type="array",
-     *     example={
-     *          "total": 4,
-     *          "total_rating": "14",
-     *          "average_rating": "3.5",
-     *          "percentage": {"5":0,"4":50,"3":50,"2":0,"1":0},
-     *     },
-     *
      *     @OA\Items(
-     *
-     *          @OA\Property(property="total", type="integer"),
-     *          @OA\Property(property="total_rating", type="string"),
-     *          @OA\Property(property="average_rating", type="string"),
+     *          @OA\Property(property="total", type="integer", example=4),
+     *          @OA\Property(property="total_rating", type="string", example="14"),
+     *          @OA\Property(property="average_rating", type="string", example="3.5"),
                 @OA\Property(
      *              property="percentage",
      *              type="array",
