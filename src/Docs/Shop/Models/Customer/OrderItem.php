@@ -70,10 +70,11 @@ class OrderItem
      * @OA\Property(
      *     title="Item's Weight",
      *     description="Product's weight of ordered item",
+     *     type="string",
      *     example="10.20",
      * )
      *
-     * @var float
+     * @var string
      */
     private $weight;
 

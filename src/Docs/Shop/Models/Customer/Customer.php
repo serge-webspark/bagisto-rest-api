@@ -24,6 +24,17 @@ class Customer
 
     /**
      * @OA\Property(
+     *     title="Full Name",
+     *     description="Customer's Full Name",
+     *     example="John Doe",
+     * )
+     *
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @OA\Property(
      *     title="First Name",
      *     description="Customer's First Name",
      *     example="John",

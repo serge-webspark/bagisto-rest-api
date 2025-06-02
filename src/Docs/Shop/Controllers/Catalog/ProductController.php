@@ -370,7 +370,7 @@ class ProductController
      *                      enum={"5", "4", "3", "2", "1"}
      *                  ),
     *                  @OA\Property(
-    *                      property="attachments[]",
+    *                      property="attachments",
     *                      type="array",
     *                      @OA\Items(type="string", format="binary"),
     *                      description="Array of attachment files (images or videos)"

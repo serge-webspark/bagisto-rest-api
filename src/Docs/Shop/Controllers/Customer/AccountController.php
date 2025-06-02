@@ -110,7 +110,7 @@ class AccountController
     *                      example="admin123"
     *                  ),
     *                  @OA\Property(
-    *                      property="image[]",
+    *                      property="image",
     *                      type="array",
     *                      @OA\Items(type="file"),
     *                      description="Customer Profile Image"

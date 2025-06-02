@@ -49,7 +49,7 @@ class ProductResource extends JsonResource
                 'total'          => $total = $reviewHelper->getTotalReviews($product),
                 'total_rating'   => $total ? $reviewHelper->getTotalRating($product) : 0,
                 'average_rating' => $total ? $reviewHelper->getAverageRating($product) : 0,
-                'percentage'     => $total ? json_encode($reviewHelper->getPercentageRating($product)) : [],
+                'percentage'     => $total ? $reviewHelper->getPercentageRating($product) : [],
             ],
 
             /* product's checks */
