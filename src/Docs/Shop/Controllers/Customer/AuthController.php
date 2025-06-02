@@ -24,47 +24,30 @@ class AuthController
      *      ),
      *
      *      @OA\RequestBody(
-     *          required=true,
+     *
      *          @OA\MediaType(
      *              mediaType="multipart/form-data",
+     *
      *              @OA\Schema(
-     *                  oneOf={
-     *                      @OA\Schema(
-     *                          required={"email", "password"},
-     *                          @OA\Property(
-     *                              property="email",
-     *                              type="string",
-     *                              format="email",
-     *                              example="shop@example.com"
-     *                          ),
-     *                          @OA\Property(
-     *                              property="password",
-     *                              type="string",
-     *                              format="password",
-     *                              example="demo123"
-     *                          )
-     *                      ),
-     *                      @OA\Schema(
-     *                          required={"email", "password", "device_name"},
-     *                          @OA\Property(
-     *                              property="email",
-     *                              type="string",
-     *                              format="email",
-     *                              example="shop@example.com"
-     *                          ),
-     *                          @OA\Property(
-     *                              property="password",
-     *                              type="string",
-     *                              format="password",
-     *                              example="demo123"
-     *                          ),
-     *                          @OA\Property(
-     *                              property="device_name",
-     *                              type="string",
-     *                              example="android"
-     *                          )
-     *                      )
-     *                  }
+     *
+     *                  @OA\Property(
+     *                      property="email",
+     *                      type="string",
+     *                      format="email",
+     *                      example="shop@example.com"
+     *                  ),
+     *                  @OA\Property(
+     *                      property="password",
+     *                      type="string",
+     *                      format="password",
+     *                      example="demo123"
+     *                  ),
+     *                  @OA\Property(
+     *                      property="device_name",
+     *                      type="string",
+     *                      example="android"
+     *                  ),
+     *                  required={"email", "password", "device_name"}
      *              )
      *          )
      *      ),
