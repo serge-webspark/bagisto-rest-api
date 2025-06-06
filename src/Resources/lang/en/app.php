@@ -465,6 +465,7 @@ return [
             'shipping-method-saved'   => 'Shipping method saved successfully.',
             'specify-payment-method'  => 'Please specify payment method.',
             'specify-shipping-method' => 'Please specify shipping method.',
+            'something-went-wrong'    => 'Something went wrong!',
 
             'cart' => [
                 'item' => [

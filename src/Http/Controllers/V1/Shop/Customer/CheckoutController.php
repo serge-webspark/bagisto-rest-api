@@ -130,7 +130,9 @@ class CheckoutController extends CustomerController
     public function saveOrder(OrderRepository $orderRepository): Response
     {
         if (Cart::hasError()) {
-            abort(400);
+            return response([
+                'message' => Cart::getErrors()['message'] ?? trans('shop::app.checkout.cart.index.something-went-wrong'),
+            ], 400);
         }
 
         Cart::collectTotals();
