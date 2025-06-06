@@ -35,17 +35,6 @@ class ProductVideo
 
     /**
      * @OA\Property(
-     *     title="Path",
-     *     description="Video path",
-     *     example="product/{product_id}/{video_name.jpg}"
-     * )
-     *
-     * @var string
-     */
-    protected $path;
-
-    /**
-     * @OA\Property(
      *     title="URL",
      *     description="Video URL",
      *     example="http://localhost/public/storage/product/{product_id}/{video_name.jpg}"

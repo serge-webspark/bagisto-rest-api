@@ -35,6 +35,7 @@ class WishlistController extends CustomerController
 
     /**
      * Add or remote item from wishlist.
+     * The remove action is deprecated, please use the `remove` method instead.
      */
     public function addOrRemove(Request $request, int $id): Response
     {
@@ -71,6 +72,35 @@ class WishlistController extends CustomerController
         return response([
             'data'    => new CustomerWishlistResource($wishlistItem),
             'message' => trans('rest-api::app.shop.wishlist.success'),
+        ]);
+    }
+
+    /**
+     * Remote item from wishlist.
+     */
+    public function remove(Request $request, int $id): Response
+    {
+        $product = $this->productRepository->findOrFail($id);
+
+        $customer = $this->resolveShopUser($request);
+
+        $wishlistItem = $this->wishlistRepository->findOneWhere([
+            'channel_id'  => core()->getCurrentChannel()->id,
+            'product_id'  => $product->id,
+            'customer_id' => $customer->id,
+        ]);
+
+        if (!$wishlistItem) {
+            return response([
+                'message' => trans('rest-api::app.shop.wishlist.error.mass-operations.resource-not-found'),
+            ], 400);
+        }
+
+        $this->wishlistRepository->delete($wishlistItem->id);
+
+        return response([
+            'data'    => CustomerWishlistResource::collection($customer->wishlist_items()->get()),
+            'message' => trans('rest-api::app.shop.wishlist.removed'),
         ]);
     }
 

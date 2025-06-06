@@ -101,6 +101,7 @@ Route::group(['middleware' => ['auth:sanctum', 'sanctum.customer']], function ()
         Route::get('', 'index');
 
         Route::post('{id}', 'addOrRemove');
+        Route::delete('{id}', 'remove');
 
         Route::post('{id}/move-to-cart', 'moveToCart');
 

@@ -68,25 +68,16 @@ class Address
 
     /**
      * @OA\Property(
-     *     title="Address1",
-     *     description="Customer's Address1",
-     *     example="819, Farnum Road",
+     *     title="Address",
+     *     description="Customer's Address",
+     *     example={"819, Farnum Road", "St. Elmira"},
+     *     type="array",
+     *     @OA\Items(type="string")
      * )
      *
-     * @var string
+     * @var array
      */
-    private $address1;
-
-    /**
-     * @OA\Property(
-     *     title="Address2",
-     *     description="Customer's Address2",
-     *     example="St. Elmira",
-     * )
-     *
-     * @var string
-     */
-    private $address2;
+    private $address;
 
     /**
      * @OA\Property(

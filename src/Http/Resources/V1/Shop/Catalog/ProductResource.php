@@ -48,14 +48,14 @@ class ProductResource extends JsonResource
             'reviews' => [
                 'total'          => $total = $reviewHelper->getTotalReviews($product),
                 'total_rating'   => $total ? $reviewHelper->getTotalRating($product) : 0,
-                'average_rating' => $total ? $reviewHelper->getAverageRating($product) : 0,
+                'average_rating' => $total ? $reviewHelper->getAverageRating($product) : '0.0',
                 'percentage'     => $total ? $reviewHelper->getPercentageRating($product) : [],
             ],
 
             /* product's checks */
             'in_stock'              => $product->haveSufficientQuantity(1),
             'is_saved'              => false,
-            'is_item_in_cart'       => Cart::getCart(),
+            'is_item_in_cart'       => false,
             'show_quantity_changer' => $this->when(
                 $product->type !== 'grouped',
                 $product->getTypeInstance()->showQuantityBox()

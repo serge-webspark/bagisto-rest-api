@@ -20,7 +20,7 @@ class CustomerAddressResource extends JsonResource
             'last_name'    => $this->last_name,
             'company_name' => $this->company_name,
             'vat_id'       => $this->vat_id,
-            'address'      => explode(PHP_EOL, $this->address),
+            'address'      => $this->address,
             'country'      => $this->country,
             'country_name' => core()->country_name($this->country),
             'state'        => $this->state,

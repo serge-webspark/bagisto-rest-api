@@ -61,8 +61,8 @@ class WishlistController
      *      path="/api/v1/customer/wishlist/{id}",
      *      operationId="createOrRemoveCustomerWishlist",
      *      tags={"Wishlists"},
-     *      summary="Add or Remove product to customer's wishlist",
-     *      description="Add or Remove product to customer's wishlist",
+     *      summary="Add or Remove (deprecated) product to customer's wishlist",
+     *      description="Add or Remove product to customer's wishlist. The remove action is deprecated, please use the `DELETE` method for the same endpoint instead.",
      *      security={ {"sanctum": {} }},
      *
      *      @OA\Parameter(
@@ -143,6 +143,50 @@ class WishlistController
      * )
      */
     public function store()
+    {
+    }
+
+    /**
+     * @OA\Delete(
+     *      path="/api/v1/customer/wishlist/{id}",
+     *      operationId="removeCustomerWishlist",
+     *      tags={"Wishlists"},
+     *      summary="Remove product from customer's wishlist",
+     *      description="Remove product from customer's wishlist",
+     *      security={ {"sanctum": {} }},
+     *
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Product id",
+     *          required=true,
+     *          in="path",
+     *
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *
+     *          @OA\JsonContent(
+     *
+     *              @OA\Property(
+     *                  property="message",
+     *                  type="string",
+     *                  example="Product removed from wishlist successfully."
+     *              )
+     *          )
+     *      ),
+     *
+     *      @OA\Response(
+     *          response=404,
+     *          description="Something went wrong!"
+     *      )
+     * )
+     */
+    public function remove()
     {
     }
 

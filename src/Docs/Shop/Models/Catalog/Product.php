@@ -127,10 +127,12 @@ class Product
     /**
      * @OA\Property(
      *     title="Videos",
-     *     description="Product's videos"
+     *     description="Product's videos",
+     *     type="array",
+     *     @OA\Items(ref="#/components/schemas/ProductVideo")
      * )
      *
-     * @var \Webkul\RestApi\Docs\Shop\Models\Catalog\ProductVideo
+     * @var \Webkul\RestApi\Docs\Shop\Models\Catalog\ProductVideo[]
      */
     public $videos;
 
@@ -138,24 +140,14 @@ class Product
      * @OA\Property(
      *     title="Base Image",
      *     description="Product's base image",
-     *     type="array",
-     *     example={
-     *          "small_image_url": "http://localhost/public/vendor/webkul/ui/assets/images/product/small-product-placeholder.webp",
-     *          "medium_image_url": "http://localhost/public/vendor/webkul/ui/assets/images/product/meduim-product-placeholder.webp",
-     *          "large_image_url": "http://localhost/public/vendor/webkul/ui/assets/images/product/large-product-placeholder.webp",
-     *          "original_image_url": "http://localhost/public/vendor/webkul/ui/assets/images/product/original-product-placeholder.webp",
-     *     },
-     *
-     *     @OA\Items(
-     *
-     *          @OA\Property(property="small_image_url", type="string"),
-     *          @OA\Property(property="medium_image_url", type="string"),
-     *          @OA\Property(property="large_image_url", type="string"),
-     *          @OA\Property(property="original_image_url", type="string")
-     *     )
+     *     type="object",
+     *     @OA\Property(property="small_image_url", type="string", example="http://localhost/public/vendor/webkul/ui/assets/images/product/small-product-placeholder.webp"),
+     *     @OA\Property(property="medium_image_url", type="string", example="http://localhost/public/vendor/webkul/ui/assets/images/product/meduim-product-placeholder.webp"),
+     *     @OA\Property(property="large_image_url", type="string", example="http://localhost/public/vendor/webkul/ui/assets/images/product/large-product-placeholder.webp"),
+     *     @OA\Property(property="original_image_url", type="string", example="http://localhost/public/vendor/webkul/ui/assets/images/product/original-product-placeholder.webp")
      * )
      *
-     * @var string
+     * @var array
      */
     public $base_image;
 
@@ -189,19 +181,17 @@ class Product
      * @OA\Property(
      *     title="Reviews",
      *     description="Product's reviews",
-     *     type="array",
-     *     @OA\Items(
-     *          @OA\Property(property="total", type="integer", example=4),
-     *          @OA\Property(property="total_rating", type="string", example="14"),
-     *          @OA\Property(property="average_rating", type="string", example="3.5"),
-                @OA\Property(
-     *              property="percentage",
-     *              type="array",
-     *              @OA\Items(
-     *                  @OA\Property(property="rating", type="integer", example=5),
-     *                  @OA\Property(property="percentage", type="float", example=100)
-     *              )
-     *          )
+     *     type="object",
+     *     @OA\Property(property="total", type="integer", example=4),
+     *     @OA\Property(property="total_rating", type="string", example="14"),
+     *     @OA\Property(property="average_rating", type="string", example="3.5"),
+     *     @OA\Property(
+     *         property="percentage",
+     *         type="array",
+     *         @OA\Items(
+     *             @OA\Property(property="rating", type="integer", example=5),
+     *             @OA\Property(property="percentage", type="float", example=100)
+     *        )
      *     )
      * )
      */
