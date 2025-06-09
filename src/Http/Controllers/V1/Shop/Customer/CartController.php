@@ -145,7 +145,7 @@ class CartController extends CustomerController
         } catch (\Exception $exception) {
             return response([
                 'message' => $exception->getMessage(),
-            ]);
+            ], 400);
         }
     }
 
