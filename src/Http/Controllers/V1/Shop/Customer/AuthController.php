@@ -55,6 +55,8 @@ class AuthController extends CustomerController
 
         return response([
             'message' => trans('rest-api::app.shop.customer.accounts.create-success'),
+            'data'    => new CustomerResource($customer),
+            'token'   => $customer->createToken($registrationRequest->device_name, ['role:customer'])->plainTextToken,
         ]);
     }
 

@@ -138,18 +138,35 @@ class AuthController
      *                      format="password",
      *                      example="admin123"
      *                  ),
-     *                  required={"first_name", "last_name", "email", "password", "password_confirmation"}
+     *                  @OA\Property(
+     *                      property="device_name",
+     *                      type="string",
+     *                      example="android"
+     *                  ),
+     *                  required={"first_name", "last_name", "email", "password", "password_confirmation", "device_name"}
      *              )
      *          )
      *      ),
-     *
-     *      @OA\Response(
+     *     
+     *     @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *
      *          @OA\JsonContent(
-     *
-     *              @OA\Property(property="message", type="string", example="Customer registered successfully.")
+     *              @OA\Property(
+     *                  property="message",
+     *                  type="string",
+     *                  example="Customer registered successfully."
+     *              ),
+     *              @OA\Property(
+     *                  property="data",
+     *                  type="object",
+     *                  ref="#/components/schemas/Customer"
+     *              ),
+     *              @OA\Property(
+     *                  property="token",
+     *                  type="string",
+     *                  example="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+     *              )
      *          )
      *      ),
      *
