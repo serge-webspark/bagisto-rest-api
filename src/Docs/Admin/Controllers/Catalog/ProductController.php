@@ -260,12 +260,6 @@ class ProductController
      *              mediaType="multipart/form-data",
      *
      *              @OA\Schema(
-     *
-     *                  @OA\Property(
-     *                      property="_method",
-     *                      type="string",
-     *                      example="PUT"
-     *                  ),
      *                  @OA\Property(
      *                      property="channel",
      *                      description="Store's channel code",

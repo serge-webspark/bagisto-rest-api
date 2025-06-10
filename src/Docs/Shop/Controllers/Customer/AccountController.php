@@ -56,11 +56,6 @@ class AccountController
     *              mediaType="multipart/form-data",
     *              @OA\Schema(
     *                  @OA\Property(
-    *                      property="_method",
-    *                      type="string",
-    *                      example="PUT"
-    *                  ),
-    *                  @OA\Property(
     *                      property="first_name",
     *                      type="string",
     *                      example="John"
