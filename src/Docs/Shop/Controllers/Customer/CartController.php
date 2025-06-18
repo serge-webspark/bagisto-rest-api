@@ -228,17 +228,13 @@ class CartController
      *
      *                  @OA\Property(
      *                      property="qty",
-     *                      type="array",
+     *                      type="object",
      *                      description="Index used as cart_item_id and value is quantity of the product, Use for all types of product (Required)",
      *                      example={
      *                          "1": 2,
      *                          "2": 3
      *                      },
-     *
-     *                      @OA\Items(
-     *
-     *                          @OA\Property(type="integer")
-     *                      )
+     *                      additionalProperties={"type": "integer"}
      *                  ),
      *                  required={"qty"}
      *              )

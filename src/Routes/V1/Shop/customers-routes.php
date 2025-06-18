@@ -101,11 +101,10 @@ Route::group(['middleware' => ['auth:sanctum', 'sanctum.customer']], function ()
         Route::get('', 'index');
 
         Route::post('{id}', 'addOrRemove');
+        Route::delete('all', 'destroyAll');
         Route::delete('{id}', 'remove');
 
         Route::post('{id}/move-to-cart', 'moveToCart');
-
-        Route::delete('all', 'destroyAll');
     });
 
     /**

@@ -354,15 +354,11 @@ class CheckoutController
      *              ),
      *              @OA\Property(
      *                  property="data",
-     *                  type="array",
-     *
-     *                  @OA\Items(
-     *
-     *                      @OA\Property(
-     *                          property="order",
-     *                          type="object",
-     *                          ref="#/components/schemas/Order"
-     *                      )
+     *                  type="object",
+     *                  @OA\Property(
+     *                      property="order",
+     *                      type="object",
+     *                      ref="#/components/schemas/Order"
      *                  )
      *              )
      *          )
