@@ -42,7 +42,7 @@ class AccountController
     }
 
     /**
-    * @OA\Post(
+    * @OA\Put(
     *      path="/api/v1/customer/profile",
     *      operationId="updateCustomer",
     *      tags={"Customers"},

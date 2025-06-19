@@ -17,6 +17,7 @@ use Webkul\Core\Rules\PhoneNumber;
 use Webkul\Customer\Repositories\CustomerGroupRepository;
 use Webkul\Customer\Repositories\CustomerRepository;
 use Webkul\RestApi\Http\Resources\V1\Shop\Customer\CustomerResource;
+use Webkul\Sales\Models\Order;
 use Webkul\Shop\Http\Requests\Customer\RegistrationRequest;
 
 class AuthController extends CustomerController
@@ -265,5 +266,32 @@ class AuthController extends CustomerController
             ['message' => __($response)],
             $response == Password::RESET_LINK_SENT ? 200 : 400
         );
+    }
+
+    public function deleteAccount(Request $request): Response
+    {
+        $request->validate([
+            'password' => 'required',
+        ]);
+
+        $customer = $this->resolveShopUser($request);
+
+        if (Hash::check($request->get('password'), $customer->password)) {
+            if ($customer->orders->whereIn('status', [Order::STATUS_PENDING, Order::STATUS_PROCESSING])->first()) {
+                return response([
+                    'message' => trans('rest-api::app.shop.customer.accounts.profile.order-pending'),
+                ], 422);
+            } else {
+                $this->customerRepository->delete($customer->id);
+
+                return response([
+                    'message' => trans('rest-api::app.shop.customer.accounts.delete-success'),
+                ]);
+            }
+        }
+
+        return response([
+            'message' => trans('rest-api::app.shop.customer.accounts.wrong-password'),
+        ], 422);
     }
 }

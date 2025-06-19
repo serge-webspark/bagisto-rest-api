@@ -395,6 +395,16 @@ return [
                 'invalid'           => 'Invalid Email or Password',
                 'password-mismatch' => 'Current password does not match.',
             ],
+
+            'profile' => [
+                'customer-details' => 'Success: Customer details fetched successfully.',
+                'delete-success'   => 'Success: Account deleted successfully.',
+                'password-unmatch' => 'Password does not match.',
+                'update-fail'      => 'Warning: Profile not updated',
+                'update-success'   => 'Success: Profile updated successfully.',
+                'wrong-password'   => 'Warning: Wrong password provided.',
+                'order-pending'    => 'You cannot delete the account because you have some pending orders.',
+            ],
         ],
 
         'errors' => [
@@ -445,6 +455,12 @@ return [
                     'invalid'           => 'Invalid Email or Password',
                     'password-mismatch' => 'Current password does not match.',
                     'update-failed'     => 'An error has occurred while updating your account',
+                ],
+
+                'delete' => [
+                    'delete-success'   => 'Success: Account deleted successfully.',
+                    'wrong-password'   => 'Warning: Wrong password provided.',
+                    'order-pending'    => 'You cannot delete the account because you have some pending orders.',
                 ],
             ],
 

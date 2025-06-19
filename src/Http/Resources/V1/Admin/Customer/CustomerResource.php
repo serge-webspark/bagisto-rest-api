@@ -26,6 +26,7 @@ class CustomerResource extends JsonResource
             'status'        => $this->status,
             'group'         => $this->when($this->customer_group_id, new CustomerGroupResource($this->group)),
             'notes'         => $this->notes,
+            'subscribed_to_news_letter' => $this->subscribed_to_news_letter,
             'created_at'    => $this->created_at,
             'updated_at'    => $this->updated_at,
         ];

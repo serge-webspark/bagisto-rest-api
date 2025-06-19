@@ -235,4 +235,34 @@ class AuthController
     public function forgotPassword()
     {
     }
+
+    /**
+     * @OA\Delete (
+     *      path="/api/v1/customer/account",
+     *      operationId="customerDeleteAccount",
+     *      tags={"Customers"},
+     *      summary="Delete customer account",
+     *      description="Delete customer account",
+     *
+     *      security={ {"sanctum": {} }},
+     *
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *
+     *          @OA\JsonContent(
+     *
+     *              @OA\Property(property="message", type="string", example="Account deleted successfully.")
+     *          )
+     *      ),
+     *
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated"
+     *      )
+     * )
+     */
+    public function deleteAccount()
+    {
+    }
 }

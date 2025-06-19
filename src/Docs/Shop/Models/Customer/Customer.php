@@ -116,10 +116,11 @@ class Customer
      * @OA\Property(
      *     title="Newsletter Subscription",
      *     description="Customer's Newsletter Subscription",
-     *     example="1",
+     *     example=true,
+     *     type="boolean",
      * )
      *
-     * @var string
+     * @var bool
      */
     private $subscribed_to_news_letter;
 

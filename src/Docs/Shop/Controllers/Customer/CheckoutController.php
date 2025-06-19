@@ -198,7 +198,7 @@ class CheckoutController
      *                   @OA\Property(
      *                       property="methods",
      *                       type="array",
-     *                       @OA\Items(ref="#/components/schemas/CartPayment")
+     *                       @OA\Items(ref="#/components/schemas/CartPaymentOption")
      *                   )
      *              )
      *          )
