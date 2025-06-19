@@ -24,13 +24,17 @@ class CheckoutController extends CustomerController
         $data =  $cartAddressRequest->all();
 
         if (Cart::hasError()) {
-            abort(400, 'There was an error with the cart.');
+            return response([
+                'message' => 'There was an error with the cart.',
+            ], 422);
         }
 
         Cart::saveAddresses($data);
 
         if (! Shipping::collectRates()) {
-            abort(400, 'Unable to collect shipping rates.');
+            return response([
+                'message' => 'Unable to collect shipping rates.',
+            ], 422);
         }
 
         $rates = [];
@@ -66,7 +70,9 @@ class CheckoutController extends CustomerController
             || ! $validatedData['shipping_method']
             || ! Cart::saveShippingMethod($validatedData['shipping_method'])
         ) {
-            abort(400, 'There was an error saving the shipping method.');
+            return response([
+                'message' => trans('rest-api::app.shop.checkout.shipping-method-not-available'),
+            ], 422);
         }
 
         Cart::collectTotals();
@@ -86,15 +92,23 @@ class CheckoutController extends CustomerController
     public function savePayment(Request $request): Response
     {
         $validatedData = $this->validate($request, [
-            'payment' => 'required',
+            'payment' => ['required', 'array'],
+            'payment.method' => ['required', 'string'],
         ]);
 
+        if (!Payment::isAvailable($validatedData['payment']['method'])) {
+            return response([
+                'message' => trans('rest-api::app.shop.checkout.payment-method-not-available'),
+            ], 422);
+        }
+
         if (
-            Cart::hasError() 
-            || ! $validatedData['payment'] 
+            Cart::hasError()
             || ! Cart::savePaymentMethod($validatedData['payment'])
         ) {
-            abort(400, 'There was an error saving the payment method.');
+            return response([
+                'message' => trans('rest-api::app.shop.checkout.payment-method-save-error'),
+            ], 422);
         }
 
         Cart::collectTotals();

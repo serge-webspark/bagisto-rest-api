@@ -40,7 +40,7 @@ class WishlistController extends CustomerController
     public function addOrRemove(Request $request, int $id): Response
     {
         $this->validate($request, [
-            'product_id' => 'required|integer|exists:products,id',
+            'product_id' => 'required|integer|exists:products,id|same:'.$id,
         ]);
 
         $product = $this->productRepository->findOrFail($id);

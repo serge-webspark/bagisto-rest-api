@@ -189,21 +189,17 @@ class CheckoutController
      *              ),
      *              @OA\Property(
      *                  property="data",
-     *                  type="array",
-     *
-     *                  @OA\Items(
-     *
-     *                      @OA\Property(
-     *                          property="cart",
-     *                          type="object",
-     *                          ref="#/components/schemas/Cart"
-     *                      ),
-     *                      @OA\Property(
-     *                          property="methods",
-     *                          type="object",
-     *                          ref="#/components/schemas/CartPayment"
-     *                      )
-     *                  )
+     *                  type="object",
+     *                  @OA\Property(
+     *                       property="cart",
+     *                       type="object",
+     *                       ref="#/components/schemas/Cart"
+     *                   ),
+     *                   @OA\Property(
+     *                       property="methods",
+     *                       type="array",
+     *                       @OA\Items(ref="#/components/schemas/CartPayment")
+     *                   )
      *              )
      *          )
      *      ),
