@@ -23,14 +23,15 @@ class CheckoutController extends CustomerController
     {
         $data =  $cartAddressRequest->all();
 
-        if (
-            Cart::hasError()
-            || ! Shipping::collectRates()
-        ) {
-            abort(400);
+        if (Cart::hasError()) {
+            abort(400, 'There was an error with the cart.');
         }
 
         Cart::saveAddresses($data);
+
+        if (! Shipping::collectRates()) {
+            abort(400, 'Unable to collect shipping rates.');
+        }
 
         $rates = [];
 
@@ -65,7 +66,7 @@ class CheckoutController extends CustomerController
             || ! $validatedData['shipping_method']
             || ! Cart::saveShippingMethod($validatedData['shipping_method'])
         ) {
-            abort(400);
+            abort(400, 'There was an error saving the shipping method.');
         }
 
         Cart::collectTotals();
@@ -93,7 +94,7 @@ class CheckoutController extends CustomerController
             || ! $validatedData['payment'] 
             || ! Cart::savePaymentMethod($validatedData['payment'])
         ) {
-            abort(400);
+            abort(400, 'There was an error saving the payment method.');
         }
 
         Cart::collectTotals();
