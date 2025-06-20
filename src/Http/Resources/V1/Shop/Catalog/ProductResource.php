@@ -88,19 +88,23 @@ class ProductResource extends JsonResource
         return [
             'special_price'           => $this->when(
                 $productTypeInstance->haveDiscount(),
-                core()->convertPrice($productTypeInstance->getMinimalPrice())
+                core()->convertPrice($productTypeInstance->getMinimalPrice()),
+                null,
             ),
             'formatted_special_price' => $this->when(
                 $productTypeInstance->haveDiscount(),
-                core()->currency($productTypeInstance->getMinimalPrice())
+                core()->currency($productTypeInstance->getMinimalPrice()),
+                null,
             ),
             'regular_price'           => $this->when(
                 $productTypeInstance->haveDiscount(),
-                data_get($productTypeInstance->getProductPrices(), 'regular_price.price')
+                data_get($productTypeInstance->getProductPrices(), 'regular_price.price'),
+                null,
             ),
             'formatted_regular_price' => $this->when(
                 $productTypeInstance->haveDiscount(),
-                data_get($productTypeInstance->getProductPrices(), 'regular_price.formated_price')
+                data_get($productTypeInstance->getProductPrices(), 'regular_price.formated_price'),
+                null,
             ),
         ];
     }
