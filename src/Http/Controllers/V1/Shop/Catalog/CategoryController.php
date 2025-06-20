@@ -3,8 +3,10 @@
 namespace Webkul\RestApi\Http\Controllers\V1\Shop\Catalog;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Webkul\Category\Repositories\CategoryRepository;
 use Webkul\RestApi\Http\Resources\V1\Shop\Catalog\CategoryResource;
+use Webkul\RestApi\Http\Resources\V1\Shop\Catalog\CategoryTreeResource;
 
 class CategoryController extends CatalogController
 {
@@ -42,5 +44,12 @@ class CategoryController extends CatalogController
         $results = $this->getRepositoryInstance()->getVisibleCategoryTree($request->input('parent_id'));
 
         return $this->getResourceCollection($results);
+    }
+
+    public function tree(): JsonResource
+    {
+        $categories = $this->getRepositoryInstance()->getVisibleCategoryTree(core()->getRequestedChannel()->root_category_id);
+
+        return CategoryTreeResource::collection($categories);
     }
 }

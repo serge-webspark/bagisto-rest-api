@@ -38,6 +38,7 @@ Route::group(['middleware' => ['auth:sanctum', 'sanctum.customer']], function ()
 Route::controller(CategoryController::class)->prefix('categories')->group(function () {
     Route::get('', 'allResources');
 
+    Route::get('tree', 'tree');
     Route::get('{id}', 'getResource');
 
 });

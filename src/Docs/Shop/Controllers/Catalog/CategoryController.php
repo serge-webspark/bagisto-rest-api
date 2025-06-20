@@ -178,4 +178,30 @@ class CategoryController
     public function descendantCategories()
     {
     }
+
+    /**
+     * @OA\Get(
+     *      path="/api/v1/categories/tree",
+     *      operationId="getShopCategoriesTree",
+     *      tags={"Categories"},
+     *      summary="Get shop categories tree",
+     *      description="Returns shop categories tree",
+     *
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *
+     *          @OA\JsonContent(
+     *              @OA\Property(
+     *                  property="data",
+     *                  type="array",
+     *                  @OA\Items(ref="#/components/schemas/CategoryTree")
+     *              )
+     *          )
+     *      )
+     * )
+     */
+    public function tree()
+    {
+    }
 }
