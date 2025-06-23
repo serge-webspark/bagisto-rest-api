@@ -40,6 +40,7 @@ Route::controller(CategoryController::class)->prefix('categories')->group(functi
 
     Route::get('tree', 'tree');
     Route::get('{id}', 'getResource');
+    Route::get('{id}/filters', 'getFilterAttributes');
 
 });
 

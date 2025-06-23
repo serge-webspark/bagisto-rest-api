@@ -75,53 +75,6 @@ class WishlistController
      *              type="integer"
      *          )
      *      ),
-     *
-     *      @OA\RequestBody(
-     *
-     *          @OA\MediaType(
-     *              mediaType="application/json",
-     *
-     *              @OA\Schema(
-     *                  required={"product_id"},
-     *                  @OA\Property(property="product_id", type="integer", example=1),
-     *                  @OA\Property(
-     *                      property="additional",
-     *                      type="array",
-     *                      example={
-     *                          "selected_configurable_option": 2,
-     *                          "quantity": 1,
-     *                          "super_attribute": {
-     *                              "attribute_id_1": "attribute_option_id_1",
-     *                              "attribute_id_2": "attribute_option_id_2"
-     *                          }
-     *                      },
-     *
-     *                      @OA\Items(
-     *
-     *                          @OA\Property(
-     *                              property="additional",
-     *                              type="array",
-     *
-     *                              @OA\Items(
-     *                                  @OA\Property(property="selected_configurable_option", type="integer"),
-     *                                  @OA\Property(property="quantity", type="integer"),
-     *                                  @OA\Property(
-     *                                      property="super_attribute",
-     *                                      type="array",
-     *
-     *                                      @OA\Items(
-     *
-     *                                          @OA\Property(type="integer")
-     *                                      )
-     *                                  ),
-     *                              )
-     *                          )
-     *                      )
-     *                  )
-     *              )
-     *          )
-     *      ),
-     *
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
@@ -153,7 +106,7 @@ class WishlistController
      *      tags={"Wishlists"},
      *      summary="Remove product from customer's wishlist",
      *      description="Remove product from customer's wishlist",
-     *      security={ {"sanctum": {} }},
+     *      security={ {"bearerAuth": {} }},
      *
      *      @OA\Parameter(
      *          name="id",

@@ -56,6 +56,12 @@ class ProductResource extends JsonResource
             'in_stock'              => $product->haveSufficientQuantity(1),
             'is_saved'              => false,
             'is_item_in_cart'       => false,
+            'is_in_sale'            => $productTypeInstance->haveDiscount(),
+            'is_saleable'           => (bool) $productTypeInstance->isSaleable(),
+            'is_new'                => (bool) $product->new,
+            'is_in_wishlist'        => (bool) auth()->guard()->user()?->wishlist_items
+                ->where('channel_id', core()->getCurrentChannel()->id)
+                ->where('product_id', $this->id)->count(),
             'show_quantity_changer' => $this->when(
                 $product->type !== 'grouped',
                 $product->getTypeInstance()->showQuantityBox()

@@ -72,7 +72,7 @@ class CategoryTree
     /**
      * @OA\Property(
      *     title="Children categories",
-     *     description="Children categories"
+     *     description="Children categories",
      *     type="array",
      *     @OA\Items(ref="#/components/schemas/CategoryTree")
      * )
