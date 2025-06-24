@@ -2,8 +2,10 @@
 
 namespace Webkul\RestApi\Http\Controllers\V1\Shop\Catalog;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Webkul\Product\Helpers\ConfigurableOption;
 use Webkul\Product\Repositories\ProductRepository;
 use Webkul\RestApi\Http\Resources\V1\Shop\Catalog\ProductResource;
 use Webkul\RestApi\Http\Resources\V1\Shop\Catalog\ProductReviewResource;
@@ -79,15 +81,88 @@ class ProductController extends CatalogController
     /**
      * Returns product's additional information.
      */
-    public function configurableConfig(Request $request, int $id): Response
+    public function configurableConfig(Request $request, int $id): JsonResponse
     {
         $resource = $this->getRepositoryInstance()->findOrFail($id);
 
-        $configurableConfig = app(\Webkul\Product\Helpers\ConfigurableOption::class)
-            ->getConfigurationConfig($resource);
+        $data = app(ConfigurableOption::class)->getConfigurationConfig($resource);
 
-        return response([
-            'data' => $configurableConfig,
+        $index = [];
+
+        foreach ($data['index'] as $key => $attributeOptionsIds) {
+            if (! isset($index[$key])) {
+                $index[$key] = [
+                    'id'                 => $key,
+                    'attribute_option_ids' => [],
+                ];
+            }
+
+            foreach ($attributeOptionsIds as $attributeId => $optionId) {
+                if ($optionId) {
+                    $optionData = [
+                        'attribute_id'       => $attributeId,
+                        'attribute_code'     => '',
+                        'attribute_option_id' => $optionId,
+                    ];
+
+                    foreach ($data['attributes'] as $attribute) {
+                        if ($attribute['id'] == $attributeId) {
+                            $optionData['attribute_code'] = $attribute['code'];
+                            break;
+                        }
+                    }
+
+                    $index[$key]['attribute_option_ids'][] = $optionData;
+                }
+            }
+        }
+
+        $data['index'] = array_values($index);
+
+        $variantPrices = [];
+
+        foreach ($data['variant_prices'] as $key => $prices) {
+            $variantPrices[$key] = [
+                'id'            => $key,
+                'regular'       => $prices['regular'],
+                'final'         => $prices['final'],
+            ];
+        }
+
+        $data['variant_prices'] = array_values($variantPrices);
+
+        $variantImages = [];
+
+        foreach ($data['variant_images'] as $key => $imgs) {
+            $variantImages[$key] = [
+                'id'     => $key,
+                'images' => [],
+            ];
+
+            foreach ($imgs as $img_index => $urls) {
+                $variantImages[$key]['images'][$img_index] = $urls;
+            }
+        }
+
+        $data['variant_images'] = array_values($variantImages);
+
+        $variantVideos = [];
+
+        foreach ($data['variant_videos'] as $key => $videos) {
+            $variantVideos[$key] = [
+                'id'     => $key,
+                'videos' => [],
+            ];
+
+            foreach ($videos as $videoIndex => $urls) {
+                $variantVideos[$key]['videos'][$videoIndex] = $urls;
+            }
+        }
+
+        $data['variant_videos'] = array_values($variantVideos);
+
+        return response()->json([
+            'data' => $data,
         ]);
     }
 
