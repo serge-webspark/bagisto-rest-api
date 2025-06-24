@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Webkul\RestApi\Http\Controllers\V1\Shop\Catalog\AttributeController;
 use Webkul\RestApi\Http\Controllers\V1\Shop\Catalog\AttributeFamilyController;
 use Webkul\RestApi\Http\Controllers\V1\Shop\Catalog\CategoryController;
+use Webkul\RestApi\Http\Controllers\V1\Shop\Catalog\CatalogFilterController;
 use Webkul\RestApi\Http\Controllers\V1\Shop\Catalog\ProductController;
 use Webkul\RestApi\Http\Controllers\V1\Shop\Catalog\ProductReviewController;
 
@@ -67,4 +68,8 @@ Route::controller(AttributeFamilyController::class)->prefix('attribute-families'
     Route::get('', 'allResources');
 
     Route::get('{id}', 'getResource');
+});
+
+Route::controller(CatalogFilterController::class)->prefix('/catalog/filters')->group(static function (): void {
+    Route::get('/', 'index');
 });
