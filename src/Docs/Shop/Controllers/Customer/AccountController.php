@@ -42,7 +42,7 @@ class AccountController
     }
 
     /**
-    * @OA\Put(
+    * @OA\Post(
     *      path="/api/v1/customer/profile",
     *      operationId="updateCustomer",
     *      tags={"Customers"},
@@ -114,7 +114,7 @@ class AccountController
     *                      property="subscribed_to_news_letter",
     *                      type="boolean"
     *                  ),
-    *                  required={"first_name", "last_name", "gender", "date_of_birth", "email", "phone"}
+    *                  required={"first_name", "last_name", "gender", "email", "phone"}
     *              )
     *          )
     *      ),

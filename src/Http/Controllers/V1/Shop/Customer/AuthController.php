@@ -138,11 +138,11 @@ class AuthController extends CustomerController
         $isPasswordChanged = false;
 
         $request->validate([
-            'first_name'                => ['required'],
-            'last_name'                 => ['required'],
+            'first_name'                => ['required', 'string'],
+            'last_name'                 => ['required', 'string'],
             'gender'                    => 'required|in:Other,Male,Female',
-            'date_of_birth'             => 'date|before:today',
-            'email'                     => 'email|unique:customers,email,'.$customer->id,
+            'date_of_birth'             => ['date', 'before:today'],
+            'email'                     => ['required', 'email', 'unique:customers,email,'.$customer->id],
             'new_password'              => 'confirmed|min:6|required_with:current_password',
             'new_password_confirmation' => 'required_with:new_password',
             'current_password'          => 'required_with:new_password',
@@ -187,7 +187,7 @@ class AuthController extends CustomerController
             if ($request->boolean('subscribed_to_news_letter')) {
                 $subscription = $this->subscriptionRepository->firstOrNew(['email' => $data['email']]);
 
-                if ($subscription) {
+                if ($subscription->exists) {
                     $this->subscriptionRepository->update([
                         'customer_id'   => $customer->id,
                         'is_subscribed' => 1,

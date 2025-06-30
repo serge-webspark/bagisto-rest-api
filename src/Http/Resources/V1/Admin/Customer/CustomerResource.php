@@ -27,6 +27,7 @@ class CustomerResource extends JsonResource
             'group'         => $this->when($this->customer_group_id, new CustomerGroupResource($this->group)),
             'notes'         => $this->notes,
             'subscribed_to_news_letter' => $this->subscribed_to_news_letter,
+            'image' => $this->image_url,
             'created_at'    => $this->created_at,
             'updated_at'    => $this->updated_at,
         ];

@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth:sanctum', 'sanctum.customer']], function ()
     Route::controller(AuthController::class)->prefix('customer')->group(function () {
         Route::get('get', 'get');
 
-        Route::put('profile', 'update');
+        Route::post('profile', 'update');
 
         Route::post('logout', 'logout');
     });
