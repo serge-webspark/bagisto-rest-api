@@ -48,10 +48,10 @@ class AddressController extends CustomerController
             'postcode',
             'phone',
             'email',
-            'default_address',
         ]), [
             'customer_id' => $customer->id,
             'address'     => implode(PHP_EOL, array_filter($request->input('address'))),
+            'default_address' => $request->boolean('is_default'),
         ]));
 
         Event::dispatch('customer.addresses.create.after', $customerAddress);
@@ -73,6 +73,12 @@ class AddressController extends CustomerController
 
         $customerAddress = $customer->addresses()->findOrFail($id);
 
+        $isDefault = $request->boolean('is_default');
+
+        if ($isDefault) {
+            $this->getRepositoryInstance()->resetDefaultAddress($customer->id);
+        }
+
         $customerAddress->update(array_merge(request()->only([
             'customer_id',
             'company_name',
@@ -86,9 +92,9 @@ class AddressController extends CustomerController
             'postcode',
             'phone',
             'email',
-            'default_address',
         ]), [
             'address' => implode(PHP_EOL, array_filter($request->input('address'))),
+            'default_address' => $isDefault,
         ]));
 
         Event::dispatch('customer.addresses.update.after', $customerAddress);

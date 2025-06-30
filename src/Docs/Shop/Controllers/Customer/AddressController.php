@@ -212,7 +212,12 @@ class AddressController
      *                      type="string",
      *                      example="INV01234567891"
      *                  ),
-     *                  required={"first_name", "last_name", "address", "country", "state", "city", "postcode", "phone", "email"}
+     *                  @OA\Property(
+     *                      property="is_default",
+     *                      type="boolean",
+     *                      example=true
+     *                  ),
+     *                  required={"first_name", "last_name", "address", "country", "state", "city", "postcode", "phone", "email", "is_default"}
      *              )
      *          )
      *      ),
@@ -334,7 +339,12 @@ class AddressController
      *                      type="string",
      *                      example="INV01234567891"
      *                  ),
-     *                  required={"first_name", "last_name", "address", "country", "state", "city", "postcode", "phone", "email"}
+     *                  @OA\Property(
+     *                       property="is_default",
+     *                       type="boolean",
+     *                       example=true
+     *                   ),
+     *                  required={"first_name", "last_name", "address", "country", "state", "city", "postcode", "phone", "email", "is_default"}
      *              )
      *          )
      *      ),

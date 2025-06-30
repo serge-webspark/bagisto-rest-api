@@ -150,6 +150,18 @@ class Customer
 
     /**
      * @OA\Property(
+     *     title="Customer Group",
+     *     description="Customer's group",
+     *     type="object",
+     *     ref="#/components/schemas/CustomerGroup"
+     * )
+     *
+     * @var CustomerGroup
+     */
+    private $group;
+
+    /**
+     * @OA\Property(
      *     title="Created at",
      *     description="Created at",
      *     example="2020-01-27 17:50:45",
