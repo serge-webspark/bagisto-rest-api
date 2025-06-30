@@ -141,7 +141,7 @@ class AuthController extends CustomerController
             'first_name'                => ['required', 'string'],
             'last_name'                 => ['required', 'string'],
             'gender'                    => 'required|in:Other,Male,Female',
-            'date_of_birth'             => ['date', 'before:today'],
+            'date_of_birth'             => ['date', 'before_or_equal:' . now()->subYears(18)->toDateString()],
             'email'                     => ['required', 'email', 'unique:customers,email,'.$customer->id],
             'new_password'              => 'confirmed|min:6|required_with:current_password',
             'new_password_confirmation' => 'required_with:new_password',
@@ -150,6 +150,8 @@ class AuthController extends CustomerController
             'image.*'                   => 'mimes:bmp,jpeg,jpg,png,webp',
             'phone'                     => ['required', new PhoneNumber(), 'unique:customers,phone,'.$customer->id],
             'subscribed_to_news_letter' => 'nullable',
+        ], [
+            'date_of_birth.before_or_equal' => trans('rest-api::app.shop.customer.accounts.error.underage'),
         ]);
 
         $data = $request->all();

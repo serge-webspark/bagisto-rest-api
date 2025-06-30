@@ -455,6 +455,7 @@ return [
                     'invalid'           => 'Invalid Email or Password',
                     'password-mismatch' => 'Current password does not match.',
                     'update-failed'     => 'An error has occurred while updating your account',
+                    'underage'          => 'You must be at least 18 years old to create an account.',
                 ],
 
                 'delete' => [
