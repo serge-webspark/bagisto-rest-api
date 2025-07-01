@@ -329,6 +329,7 @@ class Cart
      * @OA\Property(
      *      title="Cart Guest Status",
      *      description="Cart is owned by customer or guest",
+     *      type="boolean",
      *      example="true"
      * )
      *
@@ -340,6 +341,7 @@ class Cart
      * @OA\Property(
      *      title="Cart Active Status",
      *      description="Cart status for active or inactive",
+     *      type="boolean",
      *      example="true"
      * )
      *
