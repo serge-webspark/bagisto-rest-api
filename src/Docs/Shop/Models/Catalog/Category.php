@@ -69,70 +69,29 @@ class Category
 
     /**
      * @OA\Property(
-     *     title="Meta Title",
-     *     description="Category's meta title",
-     *     example="Women Apparel"
+     *     title="Banner URL",
+     *     description="Category's banner URL",
+     *     example="http://localhost/public/storage/category/{category_id}/{image_name}.jpg",
+     *     type="string",
+     *     format="uri"
      * )
      *
      * @var string
      */
-    public $meta_title;
+    public $banner_url;
 
     /**
      * @OA\Property(
-     *     title="Meta Description",
-     *     description="Category's meta description",
-     *     example="Women Apparel"
+     *     title="Category Icon URL",
+     *     description="Category's icon URL",
+     *     example="http://localhost/public/storage/velocity/category_icon_path/{category_id}/{image_name}.png",
+     *     type="string",
+     *     format="uri"
      * )
      *
      * @var string
      */
-    public $meta_description;
-
-    /**
-     * @OA\Property(
-     *     title="Meta Keywords",
-     *     description="Category's meta keywords",
-     *     example="Women Apparel"
-     * )
-     *
-     * @var string
-     */
-    public $meta_keywords;
-
-    /**
-     * @OA\Property(
-     *     title="Status",
-     *     description="Category's status",
-     *     example=1,
-     *     enum={"0", "1"}
-     * )
-     *
-     * @var int
-     */
-    public $status;
-
-    /**
-     * @OA\Property(
-     *     title="Image URL",
-     *     description="Category's image URL",
-     *     example="http://localhost/public/storage/category/{category_id}/{image_name}.jpg"
-     * )
-     *
-     * @var string
-     */
-    public $image_url;
-
-    /**
-     * @OA\Property(
-     *     title="Category Icon Path",
-     *     description="Category's icon path",
-     *     example="http://localhost/public/storage/velocity/category_icon_path/{category_id}/{image_name}.png"
-     * )
-     *
-     * @var string
-     */
-    public $category_icon_path;
+    public $logo_url;
 
     /**
      * @OA\Property(
@@ -144,6 +103,19 @@ class Category
      * @var object
      */
     public $additional;
+
+    /**
+     * @OA\Property(
+     *     title="Position",
+     *     description="Category's position in the list",
+     *     type="integer",
+     *     format="int64",
+     *     example=1
+     * )
+     *
+     * @var int
+     */
+    public $position;
 
     /**
      * @OA\Property(

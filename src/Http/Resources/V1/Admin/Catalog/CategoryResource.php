@@ -3,7 +3,6 @@
 namespace Webkul\RestApi\Http\Resources\V1\Admin\Catalog;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Storage;
 
 class CategoryResource extends JsonResource
 {
@@ -21,13 +20,8 @@ class CategoryResource extends JsonResource
             'slug'               => $this->slug,
             'display_mode'       => $this->display_mode,
             'description'        => $this->description,
-            'meta_title'         => $this->meta_title,
-            'meta_description'   => $this->meta_description,
-            'meta_keywords'      => $this->meta_keywords,
-            'status'             => $this->status,
             'banner_url'         => $this->banner_url,
             'logo_url'           => $this->logo_url,
-            'translations'       => $this->translations,
             'position'           => $this->position,
             'additional'         => $this->additional,
             'created_at'         => $this->created_at,
