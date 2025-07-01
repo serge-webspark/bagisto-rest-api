@@ -37,12 +37,11 @@ class ProductReview
      * @OA\Property(
      *     title="Rating",
      *     description="Review rating",
-     *     format="int64",
-     *     example=4,
-     *     enum={"5", "4", "3", "2", "1"}
+     *     type="string",
+     *     example="5.0"
      * )
      *
-     * @var int
+     * @var string
      */
     private $rating;
 

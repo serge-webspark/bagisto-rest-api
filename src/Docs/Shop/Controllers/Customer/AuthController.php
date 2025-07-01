@@ -246,6 +246,21 @@ class AuthController
      *
      *      security={ {"sanctum": {} }},
      *
+     *      @OA\RequestBody(
+     *           @OA\MediaType(
+     *               mediaType="multipart/form-data",
+     *               @OA\Schema(
+     *                   @OA\Property(
+     *                       property="password",
+     *                       title="Password",
+     *                       type="string",
+     *                       example="12345678"
+     *                   ),
+     *                   required={"password"}
+     *               )
+     *           )
+     *       ),
+     *
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
