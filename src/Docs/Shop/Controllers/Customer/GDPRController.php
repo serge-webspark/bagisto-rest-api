@@ -79,6 +79,10 @@ class GDPRController
      *                  @OA\Items(ref="#/components/schemas/GDPR")
      *              ),
      *              @OA\Property(
+     *                  property="links",
+     *                  ref="#/components/schemas/Links"
+     *              ),
+     *              @OA\Property(
      *                  property="meta",
      *                  ref="#/components/schemas/Pagination"
      *              )

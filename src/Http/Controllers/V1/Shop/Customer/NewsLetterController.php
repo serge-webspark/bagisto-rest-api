@@ -53,7 +53,7 @@ class NewsLetterController extends CustomerController
         Event::dispatch('customer.subscription.after', $subscription);
 
         return response([
-            'date'    => $subscription,
+            'data'    => $subscription,
             'message' => trans('rest-api::app.admin.customers.news-letter.create-success'),
         ]);
     }

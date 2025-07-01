@@ -80,7 +80,10 @@ class CurrencyController
      *
      *                  @OA\Items(ref="#/components/schemas/Currency")
      *              ),
-     *
+     *              @OA\Property(
+     *                   property="links",
+     *                   ref="#/components/schemas/Links"
+     *               ),
      *              @OA\Property(
      *                  property="meta",
      *                  ref="#/components/schemas/Pagination"

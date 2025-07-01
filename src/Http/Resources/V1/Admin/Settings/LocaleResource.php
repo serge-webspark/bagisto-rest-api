@@ -20,7 +20,7 @@ class LocaleResource extends JsonResource
             'name'       => $this->name,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'logo_path'  => $this->logo_path,
+            'logo_url'   => $this->logo_url,
         ];
     }
 }

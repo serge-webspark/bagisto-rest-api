@@ -83,12 +83,14 @@ class Locale
 
     /**
      * @OA\Property(
-     *     title="Image",
-     *     description="Locale image",
-     *     example="settings/locale-images/1/image_name.jpg"
+     *     title="Image URL",
+     *     description="Locale image URL",
+     *     example="http://bagisto.test/storage/locales/gPItfHHyylLDkdFIdouZAXEjZxqbUzkx5CcmBhp3.png",
+     *     type="string",
+     *     format="uri"
      * )
      *
      * @var string
      */
-    public $locale_image;
+    public $logo_url;
 }

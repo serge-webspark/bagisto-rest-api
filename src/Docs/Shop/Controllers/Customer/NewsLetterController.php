@@ -41,7 +41,12 @@ class NewsLetterController
      *                  property="message",
      *                  type="string",
      *                  example="You have successfully subscribed to our newsletter."
-     *              )
+     *              ),
+     *              @OA\Property(
+     *                  property="data",
+     *                  type="object",
+     *                  ref="#/components/schemas/Subscription"
+     *             )
      *          )
      *      ),
      *

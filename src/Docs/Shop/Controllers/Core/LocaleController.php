@@ -80,7 +80,10 @@ class LocaleController
      *
      *                  @OA\Items(ref="#/components/schemas/Locale")
      *              ),
-     *
+     *              @OA\Property(
+     *                  property="links",
+     *                  ref="#/components/schemas/Links"
+     *              ),
      *              @OA\Property(
      *                  property="meta",
      *                  ref="#/components/schemas/Pagination"

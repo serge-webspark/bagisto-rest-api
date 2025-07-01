@@ -50,7 +50,6 @@ class AddressController extends CustomerController
             'email',
         ]), [
             'customer_id' => $customer->id,
-            'address'     => implode(PHP_EOL, array_filter($request->input('address'))),
             'default_address' => $request->boolean('is_default'),
         ]));
 
@@ -93,7 +92,6 @@ class AddressController extends CustomerController
             'phone',
             'email',
         ]), [
-            'address' => implode(PHP_EOL, array_filter($request->input('address'))),
             'default_address' => $isDefault,
         ]));
 

@@ -70,12 +70,11 @@ class Address
      * @OA\Property(
      *     title="Address",
      *     description="Customer's Address",
-     *     example={"819, Farnum Road", "St. Elmira"},
-     *     type="array",
-     *     @OA\Items(type="string")
+     *     example="819, Farnum Road St. Elmira",
+     *     type="string"
      * )
      *
-     * @var array
+     * @var string
      */
     private $address;
 
@@ -150,7 +149,7 @@ class Address
      * @OA\Property(
      *     title="Is Default Address or Not",
      *     description="Customer's Default Address",
-     *     enum={"1", "0"}
+     *     type="boolean"
      * )
      *
      * @var bool

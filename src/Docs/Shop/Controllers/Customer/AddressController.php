@@ -81,7 +81,10 @@ class AddressController
      *
      *                  @OA\Items(ref="#/components/schemas/Address")
      *              ),
-     *
+     *              @OA\Property(
+     *                   property="links",
+     *                   ref="#/components/schemas/Links"
+     *              ),
      *              @OA\Property(
      *                  property="meta",
      *                  ref="#/components/schemas/Pagination"
@@ -169,11 +172,8 @@ class AddressController
      *                  @OA\Property(
      *                      property="address",
      *                      description="Street Address",
-     *                      type="array",
-     *                      example={"5230, N Lincoln Ave"},
-     *                      @OA\Items(
-     *                          type="string"
-     *                      )
+     *                      type="string",
+     *                      example="5230, N Lincoln Ave"
      *                  ),
      *                  @OA\Property(
      *                      property="country",
@@ -296,11 +296,8 @@ class AddressController
      *                  @OA\Property(
      *                      property="address",
      *                      description="Street Address",
-     *                      type="array",
-     *                      example={"5230, N Lincoln Ave"},
-     *                      @OA\Items(
-     *                          type="string"
-     *                      )
+     *                      type="string",
+     *                      example="5230, N Lincoln Ave"
      *                  ),
      *                  @OA\Property(
      *                      property="country",
