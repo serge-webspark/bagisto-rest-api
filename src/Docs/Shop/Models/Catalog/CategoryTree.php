@@ -71,6 +71,32 @@ class CategoryTree
 
     /**
      * @OA\Property(
+     *     title="Banner URL",
+     *     description="Category's banner URL",
+     *     example="http://localhost/public/storage/category/{category_id}/{image_name}.jpg",
+     *     type="string",
+     *     format="uri"
+     * )
+     *
+     * @var string
+     */
+    public $banner_url;
+
+    /**
+     * @OA\Property(
+     *     title="Category Icon URL",
+     *     description="Category's icon URL",
+     *     example="http://localhost/public/storage/velocity/category_icon_path/{category_id}/{image_name}.png",
+     *     type="string",
+     *     format="uri"
+     * )
+     *
+     * @var string
+     */
+    public $logo_url;
+
+    /**
+     * @OA\Property(
      *     title="Children categories",
      *     description="Children categories",
      *     type="array",
