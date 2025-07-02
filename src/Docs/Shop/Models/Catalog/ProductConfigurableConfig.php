@@ -144,22 +144,22 @@ class ProductConfigurableConfig
      *     example={
      *          {
      *              "id": 4,
-     *              "regular_price": {
+     *              "regular": {
      *                  "price": 40,
      *                  "formated_price": "$40.00"
      *              },
-     *              "final_price": {
+     *              "final": {
      *                  "price": 38.5,
      *                  "formated_price": "$38.50"
      *              }
      *          },
      *          {
      *              "id": 5,
-     *              "regular_price": {
+     *              "regular": {
      *                  "price": 30,
      *                  "formated_price": "$30.00"
      *              },
-     *              "final_price": {
+     *              "final": {
      *                  "price": 30,
      *                  "formated_price": "$30.00"
      *              }
@@ -174,13 +174,13 @@ class ProductConfigurableConfig
      *              example=1
      *          ),
      *          @OA\Property(
-     *              property="regular_price",
+     *              property="regular",
      *              type="object",
      *              @OA\Property(property="price", type="string", example="60.00"),
      *              @OA\Property(property="formated_price", type="string", example="$60.00")
      *          ),
      *          @OA\Property(
-     *              property="final_price",
+     *              property="final",
      *              type="object",
      *              @OA\Property(property="price", type="string", example="60.00"),
      *              @OA\Property(property="formated_price", type="string", example="$60.00")
@@ -278,10 +278,10 @@ class ProductConfigurableConfig
      *     type="object",
      *     example={
      *          "formated_price": "$30.00",
-     *          "price": 30
+     *          "price": "30.0000"
      *      },
-     *      @OA\Property(property="formated_price", type="string", example="$30.00"),
-     *      @OA\Property(property="price", type="string", example="30.00")
+     *     @OA\Property(property="formated_price", type="string", example="$30.00"),
+     *     @OA\Property(property="price", type="string", example="30.0000")
      * )
      *
      * @var object

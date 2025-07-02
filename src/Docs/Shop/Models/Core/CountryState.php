@@ -48,12 +48,13 @@ class CountryState
      * @OA\Property(
      *     title="Default Name",
      *     description="State default name",
-     *     example="Uttar Pradesh"
+     *     example="Uttar Pradesh",
+     *     type="string"
      * )
      *
      * @var string
      */
-    public $default_name;
+    public $name;
 
     /**
      * @OA\Property(
@@ -66,14 +67,4 @@ class CountryState
      * @var int
      */
     public $country_id;
-
-    /**
-     * @OA\Property(
-     *     title="Translations",
-     *     description="State translations"
-     * )
-     *
-     * @var \Webkul\RestApi\Docs\Shop\Models\Core\CountryStateTranslation
-     */
-    public $translations;
 }

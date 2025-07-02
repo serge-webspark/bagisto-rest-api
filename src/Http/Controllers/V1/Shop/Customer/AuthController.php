@@ -156,13 +156,6 @@ class AuthController extends CustomerController
 
         $data = $request->all();
 
-        if (
-            core()->getCurrentChannel()->theme === 'default' 
-            && ! isset($data['image'])
-        ) {
-            $data['image']['image_0'] = '';
-        }
-
         $data['subscribed_to_news_letter'] = $request->boolean('subscribed_to_news_letter');
 
         if (! empty($data['current_password'])) {
@@ -171,7 +164,7 @@ class AuthController extends CustomerController
 
                 $data['password'] = bcrypt($data['new_password']);
             } else {
-                return response(['message' => trans('rest-api::app.shop.customer.accounts.error.password-mismatch')]);
+                return response(['message' => trans('rest-api::app.shop.customer.accounts.error.password-mismatch')], 422);
             }
         } else {
             unset($data['new_password']);
@@ -232,7 +225,7 @@ class AuthController extends CustomerController
             ]);
         }
 
-        return response(['message' => trans('rest-api::app.shop.customer.accounts.error.update-failed')]);
+        return response(['message' => trans('rest-api::app.shop.customer.accounts.error.update-failed')], 422);
     }
 
     /**

@@ -201,6 +201,14 @@ class CountryController
      *                  property="data",
      *                  type="array",
      *                  @OA\Items(ref="#/components/schemas/CountryState")
+     *              ),
+     *              @OA\Property(
+     *                  property="links",
+     *                  ref="#/components/schemas/Links"
+     *              ),
+     *              @OA\Property(
+     *                  property="meta",
+     *                  ref="#/components/schemas/Pagination"
      *              )
      *          )
      *      ),
