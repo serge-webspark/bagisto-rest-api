@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 use Webkul\Product\Helpers\ConfigurableOption;
 use Webkul\Product\Repositories\ProductRepository;
 use Webkul\RestApi\Http\Resources\V1\Shop\Catalog\ProductResource;
-use Webkul\RestApi\Http\Resources\V1\Shop\Catalog\ProductReviewResource;
+use Webkul\RestApi\Http\Resources\V1\Shop\Catalog\CustomerReviewResource;
 
 class ProductController extends CatalogController
 {
@@ -178,7 +178,7 @@ class ProductController extends CatalogController
             ->paginate(request()->input('limit') ?? 10);
 
         return response([
-            'data' => ProductReviewResource::collection($reviews),
+            'data' => CustomerReviewResource::collection($reviews),
         ]);
     }
 }

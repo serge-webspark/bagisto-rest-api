@@ -3,9 +3,8 @@
 namespace Webkul\RestApi\Http\Resources\V1\Shop\Catalog;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Webkul\RestApi\Http\Resources\V1\Shop\Customer\CustomerResource;
 
-class ProductReviewResource extends JsonResource
+class CustomerReviewResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -22,8 +21,8 @@ class ProductReviewResource extends JsonResource
             'comment'    => $this->comment,
             'name'       => $this->name,
             'status'     => $this->status,
-            'product'    => new ProductResource($this->product),
-            'customer'   => $this->when($this->customer_id, new CustomerResource($this->customer)),
+            'product'    => new ReviewedProductResource($this->product),
+            'customer'   => $this->when($this->customer_id, new ReviewerResource($this->customer)),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

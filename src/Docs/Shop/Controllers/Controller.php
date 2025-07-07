@@ -106,6 +106,14 @@ namespace Webkul\RestApi\Docs\Shop\Controllers;
  *     name="Newsletter",
  *     description="API Endpoints of Newsletters"
  * )
+ * @OA\Tag(
+ *      name="Reviews",
+ *      description="API Endpoints of Reviews"
+ * )
+ * @OA\Tag(
+ *      name="Support",
+ *      description="API Endpoints of Support system"
+ * )
  */
 class Controller
 {

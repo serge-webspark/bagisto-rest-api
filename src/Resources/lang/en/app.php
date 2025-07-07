@@ -553,6 +553,10 @@ return [
             ],
         ],
 
+        'support-requests' => [
+            'thanks-for-contact' => 'Thank you for contacting us. We will get back to you soon.',
+        ],
+
         'errors' => [
             '404' => [
                 'message' => 'Oops! The page you\'re looking for is on vacation. It seems we couldn\'t find what you were searching for.',

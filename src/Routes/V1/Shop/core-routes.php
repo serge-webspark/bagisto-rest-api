@@ -7,6 +7,7 @@ use Webkul\RestApi\Http\Controllers\V1\Shop\Core\CountryController;
 use Webkul\RestApi\Http\Controllers\V1\Shop\Core\CountryStateController;
 use Webkul\RestApi\Http\Controllers\V1\Shop\Core\CurrencyController;
 use Webkul\RestApi\Http\Controllers\V1\Shop\Core\LocaleController;
+use Webkul\RestApi\Http\Controllers\V1\Shop\Core\SupportRequestsController;
 use Webkul\RestApi\Http\Controllers\V1\Shop\Core\ThemeController;
 
 /**
@@ -72,4 +73,8 @@ Route::controller(ThemeController::class)->prefix('theme/customizations')->group
     Route::get('', 'getThemeCustomizations');
 
     Route::get('{id}', 'getResource');
+});
+
+Route::controller(SupportRequestsController::class)->prefix('/support/requests')->group(static function () {
+    Route::post('/', 'store');
 });

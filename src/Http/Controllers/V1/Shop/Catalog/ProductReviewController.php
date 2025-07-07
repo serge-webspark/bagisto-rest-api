@@ -5,7 +5,7 @@ namespace Webkul\RestApi\Http\Controllers\V1\Shop\Catalog;
 use Illuminate\Http\Request;
 use Webkul\Product\Repositories\ProductReviewRepository;
 use Webkul\Product\Repositories\ProductReviewAttachmentRepository;
-use Webkul\RestApi\Http\Resources\V1\Shop\Catalog\ProductReviewResource;
+use Webkul\RestApi\Http\Resources\V1\Shop\Catalog\CustomerReviewResource;
 
 class ProductReviewController extends CatalogController
 {
@@ -29,7 +29,7 @@ class ProductReviewController extends CatalogController
      */
     public function resource(): string
     {
-        return ProductReviewResource::class;
+        return CustomerReviewResource::class;
     }
 
     /**
@@ -60,7 +60,7 @@ class ProductReviewController extends CatalogController
         $this->productReviewAttachmentRepository->upload(request()->file('attachments') ?? [], $productReview);
 
         return response([
-            'data'    => new ProductReviewResource($productReview),
+            'data'    => new CustomerReviewResource($productReview),
             'message' => trans('rest-api::app.shop.catalog.products.reviews.create-success'),
         ]);
     }

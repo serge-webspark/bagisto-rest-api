@@ -162,11 +162,11 @@ class Cart
      * @OA\Property(
      *      title="Base Grand Total",
      *      description="Base Grand Total of the Cart",
-     *      example="10.00",
-     *      type="string"
+     *      example=10.99,
+     *      type="float"
      * )
      *
-     * @var string
+     * @var float
      */
     private $base_grand_total;
 
@@ -179,17 +179,17 @@ class Cart
      *
      * @var string
      */
-    private $formatted_based_grand_total;
+    private $formatted_base_grand_total;
 
     /**
      * @OA\Property(
      *      title="Sub Total",
      *      description="Sub Total of the Cart",
-     *      example="10.00",
-     *      type="string"
+     *      example=10.99,
+     *      type="float"
      * )
      *
-     * @var string
+     * @var float
      */
     private $sub_total;
 
@@ -209,11 +209,11 @@ class Cart
      * @OA\Property(
      *      title="Base Sub Total",
      *      description="Base Sub Total of the Cart",
-     *      example="10.00",
-     *      type="string"
+     *      example=10.99,
+     *      type="float"
      * )
      *
-     * @var string
+     * @var float
      */
     private $base_sub_total;
 
@@ -227,17 +227,17 @@ class Cart
      *
      * @var string
      */
-    private $formatted_based_sub_total;
+    private $formatted_base_sub_total;
 
     /**
      * @OA\Property(
      *      title="Tax Total",
      *      description="Tax Total of the Cart",
-     *      example="10.00",
-     *      type="string"
+     *      example=10.99,
+     *      type="float"
      * )
      *
-     * @var string
+     * @var float
      */
     private $tax_total;
 
@@ -257,11 +257,11 @@ class Cart
      * @OA\Property(
      *      title="Base Tax Total",
      *      description="Base Tax Total of the Cart",
-     *      example="10.00",
-     *      type="string"
+     *      example=5.99,
+     *      type="float"
      * )
      *
-     * @var string
+     * @var float
      */
     private $base_tax_total;
 
@@ -275,17 +275,17 @@ class Cart
      *
      * @var string
      */
-    private $formatted_based_tax_total;
+    private $formatted_base_tax_total;
 
     /**
      * @OA\Property(
      *      title="Discount Total",
      *      description="Discount Total of the Cart",
-     *      example="10.00",
-     *      type="string"
+     *      example=3.99,
+     *      type="float"
      * )
      *
-     * @var string
+     * @var float
      */
     private $discount;
 
@@ -305,11 +305,11 @@ class Cart
      * @OA\Property(
      *      title="Base Discount Total",
      *      description="Base Discount Total of the Cart",
-     *      example="10.00",
-     *      type="string"
+     *      example=3.99,
+     *      type="float"
      * )
      *
-     * @var string
+     * @var float
      */
     private $base_discount;
 
@@ -323,7 +323,19 @@ class Cart
      *
      * @var string
      */
-    private $formatted_based_discount;
+    private $formatted_base_discount;
+
+    /**
+     * @OA\Property(
+     *      title="Formatted Discounted Sub Total",
+     *      description="Formatted Discounted Sub Total of the Cart",
+     *      example="$3.99",
+     *      type="string"
+     * )
+     *
+     * @var string
+     */
+    private $formatted_discounted_sub_total;
 
     /**
      * @OA\Property(

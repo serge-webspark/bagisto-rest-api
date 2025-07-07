@@ -4,6 +4,8 @@ namespace Webkul\RestApi\Traits;
 
 use Illuminate\Http\Request;
 use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
+use Webkul\Customer\Contracts\Customer;
+use Webkul\User\Contracts\Admin;
 
 trait ProvideUser
 {
@@ -34,7 +36,7 @@ trait ProvideUser
     /**
      * Resolve admin user.
      *
-     * @return \Webkul\User\Contracts\Admin
+     * @return Admin|Customer
      */
     public function resolveAdminUser(Request $request)
     {
