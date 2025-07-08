@@ -19,7 +19,7 @@ class OrderAddressResource extends JsonResource
             'email'        => $this->email,
             'first_name'   => $this->first_name,
             'last_name'    => $this->last_name,
-            'address1'     => explode(PHP_EOL, $this->address1),
+            'address'      => $this->address,
             'country'      => $this->country,
             'country_name' => core()->country_name($this->country),
             'state'        => $this->state,

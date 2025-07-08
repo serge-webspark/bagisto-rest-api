@@ -79,17 +79,6 @@ class Order
 
     /**
      * @OA\Property(
-     *     title="Payment Title",
-     *     description="Payment Title",
-     *     example="Wallet Payment",
-     * )
-     *
-     * @var string
-     */
-    private $payment_title;
-
-    /**
-     * @OA\Property(
      *     title="Base Currency Code",
      *     description="Base Currency Code",
      *     example="USD",
@@ -160,28 +149,6 @@ class Order
 
     /**
      * @OA\Property(
-     *     title="Order Items",
-     *     description="Order Items",
-     *     type="array",
-     *     @OA\Items(ref="#/components/schemas/OrderItem")
-     * )
-     *
-     * @var \Webkul\RestApi\Docs\Shop\Models\Customer\OrderItem[]
-     */
-    private $items;
-
-    /**
-     * @OA\Property(
-     *     title="Order's Customer",
-     *     description="Order's Customer"
-     * )
-     *
-     * @var \Webkul\RestApi\Docs\Shop\Models\Customer\Customer
-     */
-    private $customer;
-
-    /**
-     * @OA\Property(
      *     title="Created at",
      *     description="Created at",
      *     example="2020-01-27 17:50:45",
@@ -205,4 +172,28 @@ class Order
      * @var \DateTime
      */
     private $updated_at;
+
+    /**
+     * @OA\Property(
+     *     title="Order Items",
+     *     description="Order Items",
+     *     type="array",
+     *     @OA\Items(ref="#/components/schemas/OrderItem")
+     * )
+     *
+     * @var \Webkul\RestApi\Docs\Shop\Models\Customer\OrderItem[]
+     */
+    private $items;
+
+    /**
+     * @OA\Property(
+     *     title="Payment details",
+     *     description="Payment details",
+     *     type="object",
+     *     ref="#/components/schemas/OrderPayment"
+     * )
+     *
+     * @var \Webkul\RestApi\Docs\Shop\Models\Customer\OrderPayment
+     */
+    public $payment;
 }

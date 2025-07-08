@@ -3,7 +3,7 @@
 namespace Webkul\RestApi\Http\Controllers\V1\Shop\Customer;
 
 use Illuminate\Http\Request;
-use Webkul\RestApi\Http\Resources\V1\Shop\Sales\OrderResource;
+use Webkul\RestApi\Http\Resources\V1\Shop\Sales\CustomerOrderResource;
 use Webkul\Sales\Repositories\OrderRepository;
 use Webkul\Checkout\Facades\Cart;
 use Webkul\RestApi\Http\Resources\V1\Shop\Checkout\CartResource;
@@ -23,7 +23,15 @@ class OrderController extends CustomerController
      */
     public function resource(): string
     {
-        return OrderResource::class;
+        return CustomerOrderResource::class;
+    }
+
+    public function getRepositoryInstance()
+    {
+        return app($this->repository())->with([
+            'items.product',
+            'items.product.images',
+        ]);
     }
 
     /**

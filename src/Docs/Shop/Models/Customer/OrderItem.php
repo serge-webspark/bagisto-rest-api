@@ -331,62 +331,16 @@ class OrderItem
 
     /**
      * @OA\Property(
-     *     title="Product Type of Ordered Item",
-     *     description="Product type of ordered item",
-     *     example="simple",
+     *     title="Base Image",
+     *     description="Product's base image",
+     *     type="object",
+     *     @OA\Property(property="small_image_url", type="string", example="http://localhost/public/vendor/webkul/ui/assets/images/product/small-product-placeholder.webp"),
+     *     @OA\Property(property="medium_image_url", type="string", example="http://localhost/public/vendor/webkul/ui/assets/images/product/meduim-product-placeholder.webp"),
+     *     @OA\Property(property="large_image_url", type="string", example="http://localhost/public/vendor/webkul/ui/assets/images/product/large-product-placeholder.webp"),
+     *     @OA\Property(property="original_image_url", type="string", example="http://localhost/public/vendor/webkul/ui/assets/images/product/original-product-placeholder.webp")
      * )
      *
-     * @var string
+     * @var array
      */
-    private $product_type;
-
-    /**
-     * @OA\Property(
-     *     title="Order ID",
-     *     description="Order ID",
-     *     format="int64",
-     *     example=1
-     * )
-     *
-     * @var int
-     */
-    private $order_id;
-
-    /**
-     * @OA\Property(
-     *     title="Parent ID of Product",
-     *     description="Parent ID of Product",
-     *     format="int64",
-     *     example=1
-     * )
-     *
-     * @var int
-     */
-    private $parent_id;
-
-    /**
-     * @OA\Property(
-     *     title="Created at",
-     *     description="Created at",
-     *     example="2020-01-27 17:50:45",
-     *     format="datetime",
-     *     type="string"
-     * )
-     *
-     * @var \DateTime
-     */
-    private $created_at;
-
-    /**
-     * @OA\Property(
-     *     title="Updated at",
-     *     description="Updated at",
-     *     example="2020-01-27 17:50:45",
-     *     format="datetime",
-     *     type="string"
-     * )
-     *
-     * @var \DateTime
-     */
-    private $updated_at;
+    public $product_base_image;
 }
