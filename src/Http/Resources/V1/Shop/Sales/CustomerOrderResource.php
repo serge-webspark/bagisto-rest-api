@@ -7,6 +7,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Webkul\RestApi\Http\Resources\V1\Admin\Sales\OrderAddressResource;
 use Webkul\Sales\Contracts\Invoice;
 use Webkul\Sales\Contracts\Shipment;
+use Webkul\Sales\Models\Refund;
 
 final class CustomerOrderResource extends JsonResource
 {
@@ -99,6 +100,8 @@ final class CustomerOrderResource extends JsonResource
             'formatted_shipping_refunded'             => core()->formatPrice($this->shipping_refunded, $this->order_currency_code),
             'base_shipping_refunded'                  => $this->base_shipping_refunded,
             'formatted_base_shipping_refunded'        => core()->formatPrice($this->base_shipping_refunded, $this->order_currency_code),
+            'updated_at'                              => $this->updated_at,
+            'created_at'                              => $this->created_at,
             'shipping_address'                        => new OrderAddressResource($this->shipping_address),
             'billing_address'                         => new OrderAddressResource($this->billing_address),
             'items'                                   => CustomerOrderItemResource::collection($this->items),
@@ -109,8 +112,9 @@ final class CustomerOrderResource extends JsonResource
             'shipments' => $this->shipments->map(static fn (Shipment $shipment): array => [
                 'id' => $shipment->id,
             ]),
-            'updated_at'                              => $this->updated_at,
-            'created_at'                              => $this->created_at,
+            'refunds' => $this->refunds->map(static fn (Refund $refund): array => [
+                'id' => $refund->id,
+            ]),
         ];
     }
 }
