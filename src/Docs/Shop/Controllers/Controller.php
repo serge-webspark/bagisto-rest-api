@@ -114,6 +114,10 @@ namespace Webkul\RestApi\Docs\Shop\Controllers;
  *      name="Support",
  *      description="API Endpoints of Support system"
  * )
+ * @OA\Tag(
+ *      name="StaticPages",
+ *      description="API Endpoints of StaticPages"
+ * )
  */
 class Controller
 {

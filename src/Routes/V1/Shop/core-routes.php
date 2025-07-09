@@ -7,6 +7,7 @@ use Webkul\RestApi\Http\Controllers\V1\Shop\Core\CountryController;
 use Webkul\RestApi\Http\Controllers\V1\Shop\Core\CountryStateController;
 use Webkul\RestApi\Http\Controllers\V1\Shop\Core\CurrencyController;
 use Webkul\RestApi\Http\Controllers\V1\Shop\Core\LocaleController;
+use Webkul\RestApi\Http\Controllers\V1\Shop\Core\StaticPageController;
 use Webkul\RestApi\Http\Controllers\V1\Shop\Core\SupportRequestsController;
 use Webkul\RestApi\Http\Controllers\V1\Shop\Core\ThemeController;
 
@@ -36,6 +37,12 @@ Route::controller(LocaleController::class)->prefix('locales')->group(function ()
  * Currency routes.
  */
 Route::controller(CurrencyController::class)->prefix('currencies')->group(function () {
+    Route::get('', 'allResources');
+
+    Route::get('{id}', 'getResource');
+});
+
+Route::controller(StaticPageController::class)->prefix('static-pages')->group(function () {
     Route::get('', 'allResources');
 
     Route::get('{id}', 'getResource');
