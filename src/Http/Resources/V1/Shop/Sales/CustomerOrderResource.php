@@ -104,6 +104,9 @@ final class CustomerOrderResource extends JsonResource
             'invoices' => $this->invoices->map(static fn ($invoice): array => [
                 'id' => $invoice->id,
             ]),
+            'shipments' => $this->shipments->map(static fn ($shipment): array => [
+                'id' => $shipment->id,
+            ]),
             'updated_at'                              => $this->updated_at,
             'created_at'                              => $this->created_at,
         ];
