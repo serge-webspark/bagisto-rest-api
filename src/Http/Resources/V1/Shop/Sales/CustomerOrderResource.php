@@ -101,6 +101,9 @@ final class CustomerOrderResource extends JsonResource
             'billing_address'                         => new OrderAddressResource($this->billing_address),
             'items'                                   => CustomerOrderItemResource::collection($this->items),
             'payment'                                 => new OrderPaymentResource($this->payment),
+            'invoices' => $this->invoices->map(static fn ($invoice): array => [
+                'id' => $invoice->id,
+            ]),
             'updated_at'                              => $this->updated_at,
             'created_at'                              => $this->created_at,
         ];
