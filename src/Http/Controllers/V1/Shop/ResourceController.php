@@ -2,6 +2,7 @@
 
 namespace Webkul\RestApi\Http\Controllers\V1\Shop;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Webkul\RestApi\Contracts\ResourceContract;
 use Webkul\RestApi\Http\Controllers\V1\V1Controller;
@@ -33,23 +34,8 @@ class ResourceController extends V1Controller implements ResourceContract
      */
     public function allResources(Request $request)
     {
-        $query = $this->getRepositoryInstance()->scopeQuery(function ($query) use ($request) {
-            if ($this->isAuthorized()) {
-                $query = $query->where('customer_id', $this->resolveShopUser($request)->id);
-            }
-
-            foreach ($request->except($this->requestException) as $input => $value) {
-                $query = $query->whereIn($input, array_map('trim', explode(',', $value)));
-            }
-
-            if ($sort = $request->input('sort')) {
-                $query = $query->orderBy($sort, $request->input('order') ?? 'desc');
-            } else {
-                $query = $query->orderBy('id', 'desc');
-            }
-
-            return $query;
-        });
+        $query = $this->getRepositoryInstance()
+            ->scopeQuery(fn (Builder $query): Builder => $this->allResourceQuery($query, $request));
 
         if (is_null($request->input('pagination')) || $request->input('pagination')) {
             $results = $query->paginate($request->input('limit') ?? 10);
@@ -58,6 +44,28 @@ class ResourceController extends V1Controller implements ResourceContract
         }
 
         return $this->getResourceCollection($results);
+    }
+
+    protected function allResourceQuery(Builder $builder, Request $request): Builder
+    {
+        return $builder
+            ->when($this->isAuthorized(), function (Builder $query) use ($request): void {
+                $query->where('customer_id', $this->resolveShopUser($request)->id);
+            })
+            ->when(
+                $request->input('sort'),
+                function (Builder $query) use ($request): void {
+                    $query->orderBy($request->input('sort'), $request->input('order') ?? 'desc');
+                },
+                function (Builder $query): void {
+                    $query->orderBy('id', 'desc');
+                }
+            )
+            ->when($request->except($this->requestException), function (Builder $query, array $filters) use ($request): void {
+                foreach ($filters as $input => $value) {
+                    $query->whereIn($input, array_map('trim', explode(',', $value)));
+                }
+            });
     }
 
     /**
