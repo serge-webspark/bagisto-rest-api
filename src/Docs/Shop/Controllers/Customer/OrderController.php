@@ -60,6 +60,31 @@ class OrderController
      *      ),
      *
      *      @OA\Parameter(
+     *           name="created_date_from",
+     *           description="Created date from",
+     *           required=false,
+     *           in="query",
+     *
+     *           @OA\Schema(
+     *               type="string",
+     *               format="date",
+     *               example="2023-01-01"
+     *           )
+     *       ),
+     *
+     *      @OA\Parameter(
+     *          name="created_date_to",
+     *          description="Created date to",
+     *          required=false,
+     *          in="query",
+     *          @OA\Schema(
+     *              type="string",
+     *              format="date",
+     *              example="2025-01-01"
+     *          )
+     *      ),
+     *
+     *      @OA\Parameter(
      *          name="limit",
      *          description="Limit",
      *          in="query",

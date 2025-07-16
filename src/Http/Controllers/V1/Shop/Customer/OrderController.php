@@ -2,6 +2,8 @@
 
 namespace Webkul\RestApi\Http\Controllers\V1\Shop\Customer;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Webkul\RestApi\Http\Resources\V1\Shop\Sales\CustomerOrderResource;
 use Webkul\Sales\Repositories\OrderRepository;
@@ -24,6 +26,17 @@ class OrderController extends CustomerController
     public function resource(): string
     {
         return CustomerOrderResource::class;
+    }
+
+    protected function allResourceQuery(Model|Builder $builder, Request $request): Builder
+    {
+        return parent::allResourceQuery($builder, $request)
+            ->when($request->get('created_date_from'), function (Builder|Model $query, string $date): void {
+                $query->whereDate('created_at', '>=', $date);
+            })
+            ->when($request->get('created_date_to'), function (Builder|Model $query, string $date): void {
+                $query->whereDate('created_at', '<=', $date);
+            });
     }
 
     public function getRepositoryInstance()

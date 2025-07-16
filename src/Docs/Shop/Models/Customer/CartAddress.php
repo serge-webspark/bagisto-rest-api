@@ -68,39 +68,13 @@ class CartAddress
 
     /**
      * @OA\Property(
-     *     title="Cart Address1",
+     *     title="Cart Address",
      *     description="Cart's address detail",
-     *     type="array",
-     *     example={
-     *          "819, Farnum Road"
-     *     },
-     *
-     *     @OA\Items(
-     *
-     *          @OA\Property(
-     *              property="address1",
-     *              type="array",
-     *
-     *              @OA\Items(
-     *
-     *                  @OA\Property(type="string")
-     *              )
-     *          )
-     *     )
+     *     type="string",
+     *     example="819, Farnum Road"
      * )
      */
-    private $address1;
-
-    /**
-     * @OA\Property(
-     *     title="Address2",
-     *     description="Customer's Address2",
-     *     example="St. Elmira",
-     * )
-     *
-     * @var string
-     */
-    private $address2;
+    private $address;
 
     /**
      * @OA\Property(
