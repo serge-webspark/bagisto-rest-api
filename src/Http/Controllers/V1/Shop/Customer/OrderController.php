@@ -12,6 +12,10 @@ use Webkul\RestApi\Http\Resources\V1\Shop\Checkout\CartResource;
 
 class OrderController extends CustomerController
 {
+    protected $requestException = [
+        'page', 'limit', 'pagination', 'sort', 'order', 'token', 'created_date_from', 'created_date_to',
+    ];
+
     /**
      * Repository class name.
      */
