@@ -59,7 +59,7 @@ class ProductResource extends JsonResource
             'is_in_sale'            => $productTypeInstance->haveDiscount(),
             'is_saleable'           => (bool) $productTypeInstance->isSaleable(),
             'is_new'                => (bool) $product->new,
-            'is_in_wishlist'        => (bool) auth()->guard()->user()?->wishlist_items
+            'is_in_wishlist'        => (bool) auth('sanctum')->user()?->wishlist_items
                 ->where('channel_id', core()->getCurrentChannel()->id)
                 ->where('product_id', $this->id)->count(),
             'show_quantity_changer' => $this->when(
